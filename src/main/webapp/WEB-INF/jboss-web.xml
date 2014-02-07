@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-web>
+	<context-root>/tictactoe</context-root>
+	<!-- 
+    <security-domain>SPNEGO</security-domain>
+    <disable-audit>true</disable-audit>
+    <valve>
+        <class-name>org.jboss.security.negotiation.NegotiationAuthenticator</class-name>
+    </valve>
+     -->
+</jboss-web>
