@@ -2,8 +2,6 @@ package com.github.ligangty.tictactoe;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.servlet.http.HttpServletRequest;

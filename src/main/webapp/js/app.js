@@ -5,6 +5,7 @@
 var tictactoeApp = angular.module('tictactoeApp', [
   'ngRoute',
   'tictactoeControllers',
+  'tictactoeDirectives',
   'tictactoeFilters',
   'tictactoeServices'
 ]);
