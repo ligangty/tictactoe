@@ -1,17 +1,21 @@
-'use strict';
+(function(ng) {
+	'use strict';
 
-/* Directives */
-var tictactoeDirectives = angular.module('tictactoeDirectives', []);
+	/* Directives */
+	var tictactoeDirectives = ng.module('tictactoeDirectives', []);
 
-tictactoeDirectives.directive("roomsDirective",function(){
-	return {
-        restrict: 'A',
-        link: function(scope, element, attrs, RoomsListCtrl) {
-            scope.$watch(attrs.ngModel,function(){
-            	console.log(element);
-            	console.log(attrs);
-            	console.log(RoomsListCtrl);
-            });
-        }
-    };
-});
+	tictactoeDirectives.directive("roomsDirective", function() {
+		return {
+			restrict : 'A',
+			// require: 'roomsDirective',
+			// controller: $RoomsListCtrl,
+			link : function(scope, element, attrs, RoomsListCtrl) {
+				console.log(element);
+				console.log(attrs);
+				// scope.$watch(attrs.ngModel,function(){
+				//            	
+				// });
+			}
+		};
+	});
+})(angular);

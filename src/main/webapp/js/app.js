@@ -1,35 +1,29 @@
-'use strict';
+(function(ng) {
 
-/* App Module */
+	'use strict';
 
-var tictactoeApp = angular.module('tictactoeApp', [
-  'ngRoute',
-  'tictactoeControllers',
-  'tictactoeDirectives',
-  'tictactoeFilters',
-  'tictactoeServices'
-]);
+	/* App Module */
 
-tictactoeApp.config(['$routeProvider', '$httpProvider',
-  function($routeProvider, $httpProvider) {
-    $routeProvider.
-      when('/register', {
-        templateUrl: 'partials/register.html',
-        controller: 'RegisterCtrl'
-      }).
-      when('/rooms/:oid', {
-        templateUrl: 'partials/rooms.html',
-        controller: 'RoomsListCtrl'
-      }).
-      when('/play', {
-        templateUrl: 'partials/play.html',
-        controller: 'PlayCtrl'
-      }).
-      otherwise({
-        redirectTo: '/register',
-      });
-    
-   // $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-}]);
+	var tictactoeApp = ng.module('tictactoeApp', [ 'ngRoute',
+			'tictactoeControllers', 'tictactoeDirectives', 'tictactoeFilters',
+			'tictactoeServices' ]);
 
+	tictactoeApp.config([ '$routeProvider', '$httpProvider',
+			function($routeProvider, $httpProvider) {
+				$routeProvider.when('/register', {
+					templateUrl : 'partials/register.html',
+					controller : 'RegisterCtrl'
+				}).when('/rooms/:oid', {
+					templateUrl : 'partials/rooms.html'
+				// controller: 'RoomsListCtrl'
+				}).when('/play', {
+					templateUrl : 'partials/play.html',
+					controller : 'PlayCtrl'
+				}).otherwise({
+					redirectTo : '/register',
+				});
 
+				// $httpProvider.defaults.headers.post["Content-Type"] =
+				// "application/x-www-form-urlencoded";
+			} ]);
+})(angular);

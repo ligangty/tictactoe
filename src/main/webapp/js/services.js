@@ -1,15 +1,16 @@
-'use strict';
+(function(ng) {
+	'use strict';
 
-/* Services */
+	/* Services */
 
-var tictactoeServices = angular.module('tictactoeServices', ['ngResource']);
+	var tictactoeServices = ng.module('tictactoeServices',
+			[ 'ngResource' ]);
 
-tictactoeServices.factory('User', ['$resource',
-  function($resource){
-  	return $resource("/tictactoe/api/user");
-  }]);
+	tictactoeServices.factory('User', [ '$resource', function($resource) {
+		return $resource("/tictactoe/api/user");
+	} ]);
 
-tictactoeServices.factory('Room', ['$resource',
-   function($resource){
-   	 return $resource("/tictactoe/api/room");
-  }]);
+	tictactoeServices.factory('Room', [ '$resource', function($resource) {
+		return $resource("/tictactoe/api/room");
+	} ]);
+})(angular);
