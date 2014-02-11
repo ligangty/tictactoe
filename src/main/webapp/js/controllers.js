@@ -57,7 +57,10 @@
 				$scope.createRoom = function() {
 					$scope.newRoom = {};
 					$scope.newRoom.creator = $scope.user;
-					Room.save($scope.newRoom);
+					Room.save($scope.newRoom,function(data){
+						$scope.newRoom = data;
+					});
+					
 				};
 			} ]);
 
