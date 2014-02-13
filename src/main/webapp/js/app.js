@@ -14,9 +14,9 @@
 					templateUrl : 'partials/register.html',
 					controller : 'RegisterCtrl'
 				}).when('/rooms/:oid', {
-					templateUrl : 'partials/rooms.html'
-				// controller: 'RoomsListCtrl'
-				}).when('/play', {
+					templateUrl : 'partials/rooms.html',
+					controller: 'RoomsListCtrl'
+				}).when('/play/:roomId', {
 					templateUrl : 'partials/play.html',
 					controller : 'PlayCtrl'
 				}).otherwise({

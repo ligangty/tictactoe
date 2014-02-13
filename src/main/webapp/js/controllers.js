@@ -40,6 +40,9 @@
 	tictactoeControllers.controller('RoomsListCtrl', [ '$scope',
 			'$routeParams', '$location', 'User', 'Room',
 			function($scope, $routeParams, $location, User, Room) {
+				$scope.loaderShow=false;
+				$scope.roomShow=false;
+				$scope.loaderImage="/tictactoe/images/loader.gif";
 				if (!$scope.user) {
 					User.get({
 						oid : $routeParams.oid
@@ -50,25 +53,37 @@
 					});
 				}
 				if (!$scope.rooms) {
+					$scope.loaderShow=true;
 					Room.query(function(data) {
 						$scope.rooms = data;
+						$scope.loaderShow=false;
+						$scope.roomShow=true;
 					});
 				}
 				$scope.createRoom = function() {
-					$scope.newRoom = {};
-					$scope.newRoom.creator = $scope.user;
-					Room.save($scope.newRoom,function(data){
+					var newRoom = {};
+					newRoom.creator = $scope.user;
+					Room.save(newRoom, function(data) {
 						$scope.newRoom = data;
+						$scope.$broadcast("NEW_ROOM_UPDATE", {
+							updatedRoom : $scope.newRoom
+						});
+						$location.path("/play/" + $scope.newRoom.roomId);
 					});
-					
+
 				};
+				
+				function loadingChange(){
+					
+				}
 			} ]);
 
-	/*
-	 * tictactoeControllers.controller('PlayCtrl', ['$scope', '$routeParams',
-	 * 'Play', function($scope, $routeParams, Play) {
-	 * 
-	 * }]);
-	 */
+	tictactoeControllers.controller('PlayCtrl', [ '$scope', '$routeParams',
+			'$location', 'Room',function($scope, $routeParams, $location, Room) {
+				$scope.room = Room.get({roomId:$routeParams.roomId},function(data){
+					
+				});
+				console.log("play rooms in");
+			} ]);
 
 })(angular);

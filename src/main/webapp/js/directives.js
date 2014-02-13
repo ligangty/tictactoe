@@ -9,9 +9,14 @@
 			console.log($scope);
 			console.log(element);
 			console.log(attrs);
-			console.log($scope.rooms);
-			scope.$watch('rooms',function(){
-				console.log($scope.rooms);
+			$scope.$watch('rooms',function(){
+				if($scope.rooms){
+					console.log($scope.rooms);
+				}
+			});
+			$scope.$on("NEW_ROOM_UPDATE",function(event, data){
+				var room = data.updatedRoom;
+				element.append("<div class='xxdiv'>"+room.roomId+","+room.isOpen+"</div>");
 			});
 		}
 		return {

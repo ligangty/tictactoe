@@ -1,12 +1,12 @@
 body { 
 padding:0; 
 }
-#bigdiv { 
+#bigdiv, .bigdiv{ 
 width:410px; 
 height:400px; 
 border:1px #0066FF solid;
 }
-#bigdiv .xxdiv { 
+.xxdiv { 
 width:120px; 
 height:120px; 
 border:1px #CCCCCC solid; 
