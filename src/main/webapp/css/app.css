@@ -1,17 +1,19 @@
-body { 
-padding:0; 
+body {
+	padding: 0;
 }
-#bigdiv, .bigdiv{ 
-width:410px; 
-height:400px; 
-border:1px #0066FF solid;
+
+#bigdiv,.bigdiv {
+	width: 410px;
+	height: 400px;
+	border: 1px #0066FF solid;
 }
-.xxdiv { 
-width:120px; 
-height:120px; 
-border:1px #CCCCCC solid; 
-background:#F6F6F6; 
-margin:5px 5px 5px 5px; 
-padding: 0; 
-float:left; 
+
+.xxdiv {
+	width: 120px;
+	height: 120px;
+	border: 1px #CCCCCC solid;
+	background: #F6F6F6;
+	margin: 5px 5px 5px 5px;
+	padding: 0;
+	float: left;
 }
