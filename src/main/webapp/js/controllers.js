@@ -84,6 +84,10 @@
 					
 				});
 				console.log("play rooms in");
+				// this handleplay function is binded to directive ng-click attribute
+				$scope.handlePlay= function(){
+					console.log("handle play triggered!");
+				};
 			} ]);
 
 })(angular);

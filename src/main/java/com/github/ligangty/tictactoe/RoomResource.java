@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -39,8 +40,18 @@ public class RoomResource {
     }
 
     @GET
-    public Response listRooms() {
-        return Response.ok(new Gson().toJson(RoomService.getAllRooms())).build();
+    public Response getRoomOrRooms(@QueryParam("roomId") Long roomId) {
+        if(roomId==null || roomId==0){
+            return Response.ok(new Gson().toJson(RoomService.getAllRooms())).build();
+        }else{
+            Room room = RoomService.getWaitingRoomById(roomId);
+            if(room==null){
+                room = RoomService.getWaitingRoomById(roomId);
+            }
+            return Response.ok(new Gson().toJson(room)).build();
+        }
+        
     }
+    
 
 }

@@ -25,11 +25,14 @@
 
 	tictactoeDirectives.directive("playDirective", function() {
 		function Link($scope, element, attrs) {
-
+			console.log("play directive");
 		}
 
 		return {
 			restrict : "A",
+			scope:{
+				clickHandler: "&ngClick" //binding click function to controller function
+			},
 			link : Link
 		};
 	});
