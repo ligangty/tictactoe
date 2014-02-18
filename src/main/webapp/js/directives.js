@@ -1,5 +1,8 @@
 (function(ng) {
 	'use strict';
+	
+	var BLOCK_IMAGE = "/tictactoe/images/block.gif";
+	var CIRCLE_IMAGE = "/tictactoe/images/circle.gif";
 
 	/* Directives */
 	var tictactoeDirectives = ng.module('tictactoeDirectives', []);
@@ -23,17 +26,55 @@
 		};
 	});
 
-	tictactoeDirectives.directive("playDirective", function() {
-		function Link($scope, element, attrs) {
-			console.log("play directive");
-		}
+	tictactoeDirectives
+			.directive(
+					"playDirective",
+					[
+							"$compile",
+							function($compile) {
+								function Link($scope, element, attrs) {
+									$scope.ticMatrix = [ {}, {}, {}, {}, {},
+											{}, {}, {}, {} ];
+									
+									
+									element
+											.on(
+													"click",
+													function(event) {
+														if ($scope.currentImageType === "block") {
+															console.log($scope.currentImageType);
+															console.log($scope.imageUrl);
+															$scope.currentImageType = "circle";
+															$scope.imageUrl = CIRCLE_IMAGE;
+														} else{
+															console.log($scope.currentImageType);
+															console.log($scope.imageUrl);
+															$scope.currentImageType = "block";
+															$scope.imageUrl = BLOCK_IMAGE;
+														}
+														if ($.trim(element
+																.html()) === "") {
+															element
+																	.append($compile(
+																			"<img ng-src='{{imageUrl}}' />")
+																			(
+																					$scope));
+														}
+														console.log("div "
+																+ $scope.index
+																+ " clicked!");
+													});
+								}
+								;
 
-		return {
-			restrict : "A",
-			scope:{
-				clickHandler: "&ngClick" //binding click function to controller function
-			},
-			link : Link
-		};
-	});
+								return {
+									restrict : "A",
+									// scope:{
+									// clickHandler: "&ngClick" //binding click
+									// function to
+									// controller function
+									// },
+									link : Link
+								};
+							} ]);
 })(angular);
