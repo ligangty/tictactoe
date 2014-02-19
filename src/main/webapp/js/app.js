@@ -6,7 +6,7 @@
 
 	var tictactoeApp = ng.module('tictactoeApp', [ 'ngRoute',
 			'tictactoeControllers', 'tictactoeDirectives', 'tictactoeFilters',
-			'tictactoeServices' ]);
+			'tictactoeRestServices', 'pageHandlingServices' ]);
 
 	tictactoeApp.config([ '$routeProvider', '$httpProvider',
 			function($routeProvider, $httpProvider) {
@@ -15,7 +15,7 @@
 					controller : 'RegisterCtrl'
 				}).when('/rooms/:oid', {
 					templateUrl : 'partials/rooms.html',
-					controller: 'RoomsListCtrl'
+					controller : 'RoomsListCtrl'
 				}).when('/play/:roomId', {
 					templateUrl : 'partials/play.html',
 					controller : 'PlayCtrl'
