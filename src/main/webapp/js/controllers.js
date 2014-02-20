@@ -73,9 +73,6 @@
 
 				};
 				
-				function loadingChange(){
-					
-				}
 			} ]);
 
 	tictactoeControllers.controller('PlayCtrl', [ '$scope', '$routeParams',

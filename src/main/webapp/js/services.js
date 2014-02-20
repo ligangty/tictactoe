@@ -88,7 +88,6 @@
 						};
 
 						var decideWinning = function() {
-							console.log(ticMatrix);
 							for(var index=0;index<WINNING_RULESET.length;index++){
 								var winRule=WINNING_RULESET[index];
 								if((ticMatrix[winRule[0]].type!==0)
