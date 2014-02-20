@@ -29,15 +29,26 @@
 			function($compile, playClickService) {
 				function Link($scope, element, attrs) {
 					element.on("click", function(event) {
-						$scope.imageUrl = playClickService.changeImageType();
-						if ($.trim(element.html()) === "") {
-							element.append($compile(
-									"<img ng-src='{{imageUrl}}' />")($scope));
+						var needChange = playClickService
+								.setPlayerAction($scope.index);
+						if (needChange.needChange) {
+							$scope.imageUrl = needChange.image;
+							if ($.trim(element.html()) === "") {
+								element.append($compile(
+										"<img ng-src='{{imageUrl.image}}' />")(
+										$scope));
+							}
 						}
-						console.log("div " + $scope.index + " clicked!");
+
+						var winResult = playClickService.decideWinner();
+						if (winResult.isWin) {
+							alert("Game Over!Congratulatios! user "
+									+ winResult.winner + " is winer!");
+						}
+						console.log(winResult);
+						// $scope.image = playClickService.changeImageType();
 					});
 				}
-				;
 
 				return {
 					restrict : "A",
