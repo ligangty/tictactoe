@@ -6,11 +6,11 @@
 
 	tictactoeDirectives.directive("roomsDirective", function() {
 		function Link($scope, element, attrs) {
-//			$scope.$watch('rooms', function() {
-//				if ($scope.rooms) {
-//					console.log($scope.rooms);
-//				}
-//			});
+			// $scope.$watch('rooms', function() {
+			// if ($scope.rooms) {
+			// console.log($scope.rooms);
+			// }
+			// });
 			$scope.$on("NEW_ROOM_UPDATE", function(event, data) {
 				var room = data.updatedRoom;
 				element.append("<div class='xxdiv'>" + room.roomId + ","
@@ -47,8 +47,9 @@
 									+ winResult.winner + " is winer!");
 							// as game winning, broad cast "GAME_OVER" event to
 							// notify all playDirectives to unbind click
-							// function
-							$rootScope.$broadcast("GAME_OVER");
+							// function. Use upper scope to broadcast to let
+							// other directives can catch this event.
+							element.parent().scope().$broadcast("GAME_OVER");
 						}
 						// when a click on this directive triggered, unbind it.
 						element.off("click");
