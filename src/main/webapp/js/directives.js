@@ -6,11 +6,6 @@
 
 	tictactoeDirectives.directive("roomsDirective", function() {
 		function Link($scope, element, attrs) {
-			// $scope.$watch('rooms', function() {
-			// if ($scope.rooms) {
-			// console.log($scope.rooms);
-			// }
-			// });
 			$scope.$on("NEW_ROOM_UPDATE", function(event, data) {
 				var room = data.updatedRoom;
 				element.append("<div class='xxdiv'>" + room.roomId + ","

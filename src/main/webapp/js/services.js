@@ -3,44 +3,68 @@
 
 	/* Services */
 
+	// REST services
 	var tictactoeRestServices = ng.module('tictactoeRestServices',
 			[ 'ngResource' ]);
 
+	// User service to get user related data
 	tictactoeRestServices.factory('User', [ '$resource', function($resource) {
 		return $resource("/tictactoe/api/user");
 	} ]);
 
+	// Rooms service to get room related data
 	tictactoeRestServices.factory('Room', [ '$resource', function($resource) {
 		return $resource("/tictactoe/api/room");
 	} ]);
 
+	// non-REST services
 	var pageHandlingServices = ng.module("pageHandlingServices", []);
 
+	// websocket service in play page for real-time commnunication
 	pageHandlingServices.factory("playWebsocketService", [
 			'$window',
-			function($window) {
+			'$q',
+			function($window, $q) {
 				var serviceResult = {};
+				var webSock;
 
 				function openWebsocket(roomId) {
 					var rootUri = getRootUri();
-					var webSock = new WebSocket(rootUri + "/tictactoe/play/"
+					webSock = new WebSocket(rootUri + "/tictactoe/play/"
 							+ roomId);
 					webSock.onopen = function() {
-						service.callback(idMatch,"CONNECTED");
+						service.callback(idMatch, "CONNECTED");
 					};
 
 					webSock.onerror = function() {
-						service.callback(idMatch,"Failed to open a connection" );
+						service
+								.callback(idMatch,
+										"Failed to open a connection");
 					};
 
 					webSock.onclose = function() {
-						service.callback(idMatch,"DISCONNECTED");
+						service.callback(idMatch, "DISCONNECTED");
 					};
 
 					webSock.onmessage = function(message) {
 						service.callback(idMatch, message.data);
 					};
-					
+
+				}
+
+				function sendRequest(request) {
+					var defer = $q.defer();
+					// var callbackId = getCallbackId();
+					// callbacks[callbackId] = {
+					// time : new Date(),
+					// cb : defer
+					// };
+					// request.callback_id = callbackId;
+					console.log('Sending request', request);
+					if (webSock !== null) {
+						webSock.send(JSON.stringify(request));
+					}
+					return defer.promise;
 				}
 
 				function getRootUri() {
@@ -71,6 +95,7 @@
 				return serviceResult;
 			} ]);
 
+	// service for front-end play logic
 	pageHandlingServices
 			.factory(
 					'playClickService',
