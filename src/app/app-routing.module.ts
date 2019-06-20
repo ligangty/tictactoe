@@ -12,12 +12,8 @@ const routes: Routes = [
   { path: 'play', component: PlayComponent }
 ];
 
-@NgModule({
-  declarations: [
-    PlayComponent,
-    RegisterComponent
-  ],
+@NgModule({  
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export default class AppRoutingModule { }

@@ -6,11 +6,11 @@ import { ImageType as ImageWithType} from '../model/imagetype.type';
 @Injectable({ providedIn: 'root' })
 export class PlayService {
   private readonly BLOCK_IMAGE: ImageWithType = {
-    image: "/tictactoe/images/block.gif",
+    image: "assets/block.gif",
     type: 1
   }
   private readonly CIRCLE_IMAGE: ImageWithType = {
-    image: "/tictactoe/images/circle.gif",
+    image: "assets/circle.gif",
     type: 2
   }
   private readonly WINNING_RULESET = [
