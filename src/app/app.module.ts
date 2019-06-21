@@ -6,16 +6,18 @@ import { HttpClientModule } from '@angular/common/http';
 
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
+import BlockComponent from './play/block/block.component'
 import PlayComponent from './play/play.component';
 import RegisterComponent from './register/register.component';
-import BlockComponent from './play/block/block.component'
+import RoomListComponent from './roomlist/roomlist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayComponent,
     RegisterComponent,
-    BlockComponent
+    BlockComponent,
+    RoomListComponent
   ],
   imports: [
     BrowserModule,

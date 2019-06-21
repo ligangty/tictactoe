@@ -3,9 +3,9 @@ import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })
 export class BroadcastService {
-  private notify: EventEmitter<string> = new EventEmitter<string>();
+  private notify: EventEmitter<any> = new EventEmitter<any>();
 
-  public broadcast(value: string): void {
+  public broadcast(value: any): void {
     this.notify.emit(value);
   }
 

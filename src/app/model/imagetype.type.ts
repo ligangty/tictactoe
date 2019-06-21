@@ -1,4 +1,4 @@
-export interface ImageType {
+export default interface ImageType {
   image: string;
   type: number;
 }

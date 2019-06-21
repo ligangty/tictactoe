@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 
-import { ImageType as ImageWithType} from '../model/imagetype.type'; 
-
+import ImageType from '../model/imagetype.type'; 
 
 @Injectable({ providedIn: 'root' })
 export class PlayService {
-  private readonly BLOCK_IMAGE: ImageWithType = {
+  private readonly BLOCK_IMAGE: ImageType = {
     image: "assets/block.gif",
     type: 1
   }
-  private readonly CIRCLE_IMAGE: ImageWithType = {
+  private readonly CIRCLE_IMAGE: ImageType = {
     image: "assets/circle.gif",
     type: 2
   }
@@ -57,7 +56,7 @@ export class PlayService {
 
   private currentImageType: string
 
-  public changeImgType(): ImageWithType {
+  public changeImgType(): ImageType {
     if (this.currentImageType === "block") {
       this.currentImageType = "circle";
       return this.CIRCLE_IMAGE;
@@ -67,7 +66,7 @@ export class PlayService {
     }
   }
 
-  public setPlayerAct(clickedDivIndex: number): { needChange: boolean, image: ImageWithType } {
+  public setPlayerAct(clickedDivIndex: number): { needChange: boolean, image: ImageType } {
     if (this.ticMatrix[clickedDivIndex].clicked === true) {
       return { needChange: false, image: null };
     } else {

@@ -1,0 +1,14 @@
+<div>
+	<h2>This is Room page</h2>
+	<p>
+		<button (click)="createRoom()">Create New Room</button>
+	</p>
+	<div>
+		<div *ngIf="loading">
+			<img src="assets/loader.gif"/>
+		</div>
+		<div class="bigdiv" *ngIf="!loading">
+			<div *ngFor="let curRoom of rooms" class="xxdiv">{{curRoom.roomId}},{{curRoom.isOpen}}</div>
+		</div>
+	</div>
+</div>

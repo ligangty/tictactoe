@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { User } from '../model/user.type';
+import User from '../model/user.type';
 import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  readonly apiUrl: string = environment.apiRoot + "user";
+  readonly apiUrl: string = environment.apiRoot + "/user";
   constructor(private http: HttpClient) { }
 
   public getUser(oid: string): Observable<any> {

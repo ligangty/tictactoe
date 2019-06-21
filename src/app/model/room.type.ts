@@ -1,5 +1,5 @@
-import { User } from "./user.type"
-export interface Room {
+import User from "./user.type"
+export default interface Room {
   roomId: number;
   // roomName:string;
   creator: User;
